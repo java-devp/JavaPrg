@@ -1,0 +1,12 @@
+server:
+  port: 1111
+security:
+  oauth2:
+    client:
+      clientId: e05d7910c47dd80f07d9
+      clientSecret: 32afd51fb2177a6c6f7569c04dc9607321404573
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
