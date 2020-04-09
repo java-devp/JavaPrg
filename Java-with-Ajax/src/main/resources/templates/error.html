@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<style>
+h1 {
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	text-align: center;
+	color:red;
+	font-size:55px;
+}
+
+#button{
+   width:144px;
+   font-size:30px;
+   font-family:comic;
+}
+</style>
+</head>
+
+<body>
+	<div class="jumbotron text-center">
+		<h1 th:text="${message}"></h1>
+		<i class='far fa-frown' style='font-size: 180px; color:lightcoral'></i>
+	</div>
+	
+	<div class="text-center">
+  <a href="/"><button id="button" type="button" class="btn btn-primary">Home</button></a>
+	</div>
+</body>
+</html>

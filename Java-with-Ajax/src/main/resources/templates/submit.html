@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+ 
+ 
+ $( document ).ready(function() {
+	  
+	  // GET REQUEST
+	  $("#getAllCustomerId").click(function(event){
+	    event.preventDefault();
+	    ajaxGet();
+	  });
+	  
+	  // DO GET
+	  function ajaxGet(){
+	    $.ajax({
+	      type : "GET",
+	      url : window.location + "/viewData",
+	      success: function(result){
+	        if(result.status == "Done"){
+	          $('#getResultDiv ul').empty();
+	          var custList = "";
+	          $.each(result.data, function(i, view){
+	            var view = "- Employee with Id = " + i + ",emp id="+view.empid+ " Employee Name = " + view.ename + ", Address = " + view.addrs + " salary = " + view.salary+"<br>";
+	            $('#getResultDiv .list-group').append(view)
+	              });
+	          console.log("Success: ", result);
+	        }else{
+	          $("#getResultDiv").html("<strong>Error</strong>");
+	          console.log("Fail: ", result);
+	        }
+	      },
+	      error : function(e) {
+	        $("#getResultDiv").html("<strong>Error</strong>");
+	        console.log("ERROR: ", e);
+	      }
+	    });  
+	  }
+	})
+ 
+  </script>
+
+<style>
+#employee {
+	border: 5px solid gray;
+	padding: 10px;
+	font-family: comic;
+	font-size: 30px;
+}
+
+tr {
+	padding: 0px;
+	color: blue;
+	font-family: bold;
+}
+th{
+  font-size:30px;
+  font-family:cursive;
+}
+
+#button {
+	color: orange;
+	text-align:center;
+	font-family: cursive;
+	font-size:30px;
+	
+}
+
+#view {
+	color: blue;
+	align: center;
+	font-size: 40px;
+	font-family: comic;
+	position: relative;
+}
+</style>
+</head>
+<body>
+
+	<div class="jombotron text-center">
+		<div id="demo">
+			<h1 id="h11">Ajax Call</h1>
+			<img src="view/java.jpg" class="rounded-circle" width="150"
+				height="150">
+			<h1 style="color: maroon">Enter your Details</h1><br>
+			
+				<h1 style=color:green th:text="${success}"></h1>
+			<form action="insertdata">
+				<table id="employee" align="center">
+					<tr>
+						<th>Name</th>
+						<td><input type="text" name="ename"
+							placeholder="Employee Name" id="ename" required /></td>
+					</tr>
+					<tr>
+						<th>City</th>
+						<td><input type="text" placeholder="Address" name="addrs"
+							id="addrs" required /></td>
+					</tr>
+					<tr>
+						<th>Salary</th>
+						<td><input type="text" name="salary" placeholder="Salary"
+							id="salary"  required /></td>
+					</tr>
+					</table><br>
+					  <div class="text-center">
+						 <button  type="submit"  id="button"
+							onclick="m1()" >submit</button>
+							</div>
+					
+				
+
+			</form>
+		</div>
+	</div>
+
+	
+		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
+			<button id="getAllCustomerId" type="button" class="btn btn-primary">Get
+				All Employee</button>
+			<div id="getResultDiv" style="padding: 20px 10px 20px 50px">
+				<ul class="list-group">
+				</ul>
+			</div>
+		</div>
+		
+	
+</body>
+</html>
