@@ -1,3 +1,3 @@
 # JavaPrg
 
-Make sure that when work with Application Network should enable to porcess some cdn which are added in html file.
+Make sure that when work with Application Network should be enable to process some cdn and other link which are added in html file.
